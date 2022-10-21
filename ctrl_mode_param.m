@@ -88,11 +88,23 @@ if ctrl_mode == 4
 end
 
 if ctrl_mode == 5
-    Tfin = 2000;
     adap = 1;
+    tgt_speed = -5;
+    tgt_depth = -50;
     Bx_0 = [0 0 tgt_depth 0 0 0];    %initial displcement
     Bv_0 = [tgt_speed 0 0 0 0 0];      %initial velocity
     Ba_0 = [0 0 0 0 0 0];       %iniial acceleration
+    
+    Cpx=xlsread('TC_depth_change.xlsx','A2:A20'); Cpy=xlsread('TC_depth_change.xlsx','B2:B20'); Cpz=xlsread('TC_depth_change.xlsx','C2:C20');
+    Cp = [Cpx' ; Cpy' ; Cpz'];
+    [~,N] = size(Cp); N = N-1;
+    
+    Tf = 5000;
+    [tnodes,~,Dm] = BeBOT(N,Tf);
+    Cp_prime = Cp*Dm;
+    
+    
+    
     % Comment other blocks
 %     set_param('Model_6DOF/Controller/HZZ','commented','on');
 %     set_param('Model_6DOF/Controller/SP','commented','on');

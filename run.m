@@ -6,7 +6,7 @@ load_data;    % importing *.igs surface geometries for hydrostat. computation an
 
 %% Set simulation parameters
 % Simulation Time (seconds)
-Tfin = 180;
+Tfin = 1000;
 Seastate = 0;        %Sea state value between 0 and 6
 
 
@@ -18,5 +18,5 @@ Seastate = 0;        %Sea state value between 0 and 6
 % 4: Vertical Zigzag
 % 5: 3D Path Following w/ L1 Augmentation
 % 6: Custom
-ctrl_mode = 1;
+ctrl_mode = 5;
 ctrl_mode_param; % set mode parameters
